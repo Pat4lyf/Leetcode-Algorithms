@@ -84,6 +84,7 @@ public class SinglyLinkedList {
             }
         head = head.next;
         size--;
+
     }
 
 
@@ -132,7 +133,7 @@ public class SinglyLinkedList {
         }
 
         Node current = head;
-        for(int i=0; i<location-2; i++) {
+        for(int i=0; i<location-1 ; i++) {
             current = current.next;
         }
         Node nextNode = current.next;
@@ -170,8 +171,8 @@ public class SinglyLinkedList {
         singlyLinkedList.addAtSpecificLocation(7, 3);
         System.out.println("The index of 4 after inserting another node at location 3: " + singlyLinkedList.indexOf(4));
         System.out.println("The index of the newly inserted node: "+ singlyLinkedList.indexOf(7));
-        singlyLinkedList.deleteFirstNode();
-        singlyLinkedList.deleteLastNode();
+//        singlyLinkedList.deleteFirstNode();
+//        singlyLinkedList.deleteLastNode();
         singlyLinkedList.traversingTheList();
         System.out.println();
         singlyLinkedList.deleteNodeFromSpecificLocation(3);

@@ -63,6 +63,63 @@ public class CircularSinglyLinkedLIst {
         }
     }
 
+    public void traversingTheList() {
+        if(head == null) {
+            System.out.println("The list is empty");
+        } else {
+            Node current = head;
+            for(int i=0; i<size; i++) {
+                System.out.print(current.value);
+                if(i != size-1) {
+                    System.out.print("=>");
+                }
+                current = current.next;
+            }
+        }
+
+    }
+
+    public void deleteNode(int location) {
+        if(head == null) {
+            System.out.println("The list is empty");
+            return;
+        }
+        Node current = head;
+
+        if(location == 0) { //checking if the location is the first node
+            if(current.next == current) { //checking if there is only one item
+                head = tail = null;
+                current.next = null;
+                size--;
+            } else {
+                Node firstNode = head.next;
+                current.next = firstNode;
+                head = firstNode;
+                tail.next = firstNode;
+                size--;
+            }
+        } else if(location >= size) { //checking if the location is the last node
+            if(current.next == current) { //checking if there is only one item
+                head = tail = null;
+                current.next = null;
+                size--;
+            } else {
+                while(current != null) {
+                    if(current.next == tail) break;
+                    current = current.next;
+                }
+                current.next = head;
+                tail = current;
+            }
+        } else {
+            for (int i=0; i<location-1; i++){
+                current = current.next;
+            }
+            current.next = current.next.next;
+            size--;
+        }
+    }
+
 
 
     private class Node {
@@ -86,6 +143,10 @@ public class CircularSinglyLinkedLIst {
         circularSinglyLinkedLIst.addLast(9);
         System.out.println();
         circularSinglyLinkedLIst.insertAtSpecificPosition(10, 1);
+        circularSinglyLinkedLIst.traversingTheList();
+        circularSinglyLinkedLIst.deleteNode(3);
+        System.out.println();
+        circularSinglyLinkedLIst.traversingTheList();
 
     }
 }
